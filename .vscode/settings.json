@@ -1,0 +1,31 @@
+{
+    "editor.formatOnSave": true,
+    "editor.linkedEditing": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.fontFamily": "'Fira Code', Consolas",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "javascript.inlayHints.parameterNames.enabled": "all",
+    "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+    "javascript.inlayHints.parameterTypes.enabled": true,
+    "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+    "prettier.configPath": "./prettier.config.mjs",
+    "eslint.enable": true,
+    "eslint.run": "onType",
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "always",
+        "source.fixAll.eslint": "always",
+        "source.organizeImports": "always"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    },
+    "cSpell.words": ["Challan"],
+    "C_Cpp.errorSquiggles": "enabled"
+}
