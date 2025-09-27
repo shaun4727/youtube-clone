@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import {
     SidebarGroup,
@@ -6,9 +6,10 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
-} from '@/components/ui/sidebar'
-import { FlameIcon, HomeIcon, PlaySquareIcon } from 'lucide-react'
-import Link from 'next/link'
+} from '@/components/ui/sidebar';
+import { useAuth, useClerk } from '@clerk/nextjs';
+import { FlameIcon, HomeIcon, PlaySquareIcon } from 'lucide-react';
+import Link from 'next/link';
 
 export const items = [
     { title: 'Home', url: '/', icon: HomeIcon },
@@ -23,9 +24,12 @@ export const items = [
         url: '/feed/trending',
         icon: FlameIcon,
     },
-]
+];
 
 export const MainSection = () => {
+    const clerk = useClerk();
+    const { isSignedIn } = useAuth();
+
     return (
         <SidebarGroup>
             <SidebarGroupContent>
@@ -36,7 +40,12 @@ export const MainSection = () => {
                                 tooltip={item.title}
                                 asChild
                                 isActive={false}
-                                onClick={() => {}}
+                                onClick={(e) => {
+                                    if (!isSignedIn && item.auth) {
+                                        e.preventDefault();
+                                        return clerk.openSignIn();
+                                    }
+                                }}
                             >
                                 <Link
                                     href={item.url}
@@ -53,5 +62,5 @@ export const MainSection = () => {
                 </SidebarMenu>
             </SidebarGroupContent>
         </SidebarGroup>
-    )
-}
+    );
+};
